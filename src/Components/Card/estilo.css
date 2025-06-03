@@ -1,5 +1,23 @@
-img{
+
+.card{
+    border: 1px solid slategrey;
+    border-radius: 10px;
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    gap: 10px;
+    width: 30%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: slategray;
+}
+.card img{
     width: 150px;
     border-radius: 50%;
-    border: 10px solid #000;
+    border: 5px solid rgb(122, 120, 120);
+    box-shadow: 5px 2px 5px #000;
+}
+.cardContent{
+
 }

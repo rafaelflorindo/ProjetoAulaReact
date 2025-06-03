@@ -3,10 +3,12 @@ import './estilo.css'
 function Card(props){
     
     return (
-        <div>
+        <div className= "card">
            <img src={props.fotoPerfil}/>
-            <h1>{props.nome}</h1>
-            <p>{props.biografia}</p>
+           <div className='cardContent'> 
+                <h1>{props.nome}</h1>
+                <p>{props.biografia}</p>
+            </div>
         </div>
     )
 }
