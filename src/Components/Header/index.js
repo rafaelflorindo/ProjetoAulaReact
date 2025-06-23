@@ -1,6 +1,7 @@
 
 import Card from './Card';
 import Menu from './Menu';
+import './index.css'
 
 function Header(){
     const biografia = "Professor de Tecnologia ...";
