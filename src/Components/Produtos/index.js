@@ -1,31 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import './index.css'
 
-export default function Produto(){
-    const [produtos, setProdutos] = useState(
-        [
-            {
-                codigo: 12, 
-                nomeProduto: 'Café', 
-                descricao: 'Melita - 500g a vacuo', 
-                preco: 34.98, quantidadeEstoque: 15
+import baseDados from "./baseProduto";
 
-            },
-            {   codigo: 15, nomeProduto: 'Coca-Cola',
-                descricao: '2l - Embalagem retornavel',
-                preco: 7.99, quantidadeEstoque: 15 
-            },
-            {   codigo: 18, nomeProduto: 'Bolacha de Mel',
-                descricao: 'Pacote 500g',
-                preco: 17.99, quantidadeEstoque: 10 
-            }
-            ,
-            {   codigo: 35, nomeProduto: 'Requeijão',
-                descricao: 'Pote de 500g',
-                preco: 14.99, quantidadeEstoque: 8 
-            }
-        ]
-    );
+export default function Produto(){
+    const [produtos, setProdutos] = useState([]);
+    
+    useEffect(() => { //evitar o looping infinito
+        setProdutos(baseDados);
+    }, []);
+
     return(
         <div>
             <h1>Lista de Produtos</h1>
@@ -35,6 +20,7 @@ export default function Produto(){
                 <th>DESCRIÇÃO</th>
                 <th>PREÇO</th>
                 <th>ESTOQUE</th>
+                <th>AÇÃO</th>
                 {
                     produtos.map(
                         (item, index)=>(
@@ -44,6 +30,9 @@ export default function Produto(){
                                 <td>{item.descricao}</td>
                                 <td>{item.preco}</td>
                                 <td>{item.quantidadeEstoque}</td>
+                                <td>
+                                    <Link onClick='navigate(listarProdutos.js)'>Visualizar</Link>
+                                </td>
                             </tr>
                         )
                     )

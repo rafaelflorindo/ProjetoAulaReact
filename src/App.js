@@ -6,6 +6,7 @@ import Sobre from './Components/Sobre';
 import CalcularDesconto from './Components/CalcularDesconto';
 import Contato from './Components/Contato';
 import Produto from './Components/Produtos';
+import ListarProduto from './Components/Produtos/listarProduto.js'
 import Footer from './Components/Footer';
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
               <Route path='/sobre' element={<Sobre />} />
               <Route path='/produtos' element={<Produto />}/>
               <Route path='/contato' element={<Contato />}/>
+              <Route path='/listarProduto' element={<ListarProduto />}/>
               <Route path='/calcularDesconto' 
               element={<CalcularDesconto valorCompra="1500" porcentagem="10" pagamento ="1"/>} />
             </Routes>
