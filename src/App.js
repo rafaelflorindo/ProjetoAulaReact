@@ -24,7 +24,7 @@ function App() {
               <Route path='/sobre' element={<Sobre />} />
               <Route path='/produtos' element={<Produto />}/>
               <Route path='/contato' element={<Contato />}/>
-              <Route path='/listarProduto/:id' element={<ListarProduto />}/>
+              <Route path="/listarProduto/:id" element={<ListarProduto />} />
               <Route path='/calcularDesconto' 
               element={<CalcularDesconto valorCompra="1500" porcentagem="10" pagamento ="1"/>} />
             </Routes>

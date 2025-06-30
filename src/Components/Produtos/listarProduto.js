@@ -3,33 +3,35 @@ import baseDados from "./baseProduto";
 import { useParams } from "react-router-dom";
 
 function ListarProduto() {
-    const [produtos, setProdutos] = useState([]);
-    const { codigo } = useParams(); 
-   
-    const id = Number(codigo); 
+    const [produto, setProduto] = useState(null); 
+    const { id } = useParams();
+    const codigo = Number(id);
 
-    const buscarProduto = () => {
+useEffect(() => {
+    console.log("Código recebido pela URL:", codigo);
+    const encontrado = baseDados.find((item) => item.codigo === codigo);
+    console.log("Produto encontrado:", encontrado);
+    setProduto(encontrado);
+}, [codigo]);
 
-        const produtoFiltrado = baseDados.filter((produto) => produto.id === id);
-
-        console.log("ProdutoFiltrado: "+ produtoFiltrado);
-        setProdutos(produtoFiltrado);
-  };
-
-  useEffect(() => {
-    buscarProduto();
-  }, []);
-
-  return (
-    
+    return (
     <div>
-      <h1>Produto(s) com id: {produtos.id}</h1>
-      {produtos.length === 0 ? 
-        <p>Nenhum produto encontrado.</p>
-       : <p>Nome: {produtos.nome}</p>
-      }
+        <h1>Detalhes do Produto</h1>
+        {produto ? (
+    <div className="detalhesProduto">
+        <p><strong>Código:</strong> {produto.codigo}</p>
+        <p><strong>Nome:</strong> {produto.nomeProduto}</p>
+        <p><strong>Descrição:</strong> {produto.descricao}</p>
+        <p><strong>Preço:</strong> R$ {produto.preco.toFixed(2)}</p>
+        <p><strong>Estoque:</strong> {produto.quantidadeEstoque}</p>
     </div>
-  );
+) : (
+    <p>Nenhum produto encontrado com o código informado.</p>
+)}
+
+    </div>
+);
+
 }
 
 export default ListarProduto;
