@@ -1,20 +1,35 @@
 import { useState, useEffect } from "react";
 import baseDados from "./baseProduto";
+import { useParams } from "react-router-dom";
 
-function listarProduto({route}){
+function ListarProduto() {
     const [produtos, setProdutos] = useState([]);
-    const id = route.id
+    const { codigo } = useParams(); 
+   
+    const id = Number(codigo); 
 
-    console.log(id);
+    const buscarProduto = () => {
 
-    useEffect(() => { //evitar o looping infinito
-        setProdutos(baseDados);
-    }, []);
+        const produtoFiltrado = baseDados.filter((produto) => produto.id === id);
 
-    return(
-        <>Listar Produto Selecionado
-        </>
-    )
+        console.log("ProdutoFiltrado: "+ produtoFiltrado);
+        setProdutos(produtoFiltrado);
+  };
+
+  useEffect(() => {
+    buscarProduto();
+  }, []);
+
+  return (
+    
+    <div>
+      <h1>Produto(s) com id: {produtos.id}</h1>
+      {produtos.length === 0 ? 
+        <p>Nenhum produto encontrado.</p>
+       : <p>Nome: {produtos.nome}</p>
+      }
+    </div>
+  );
 }
 
-export default listarProduto
+export default ListarProduto;

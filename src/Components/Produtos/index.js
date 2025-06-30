@@ -31,7 +31,7 @@ export default function Produto(){
                                 <td>{item.preco}</td>
                                 <td>{item.quantidadeEstoque}</td>
                                 <td>
-                                    <Link onClick='navigate(listarProdutos.js)'>Visualizar</Link>
+                                    <Link to={`/listarProduto/${item.codigo}`}>Visualizar</Link>
                                 </td>
                             </tr>
                         )
